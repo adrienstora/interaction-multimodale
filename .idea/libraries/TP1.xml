@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="TP1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/visionneur1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ivy-java-1.2.8rc1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

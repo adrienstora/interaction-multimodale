@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE grammar PUBLIC "-//W3C//DTD GRAMMAR 1.0//EN"
+                "grammar.dtd">
+<!-- the default grammar language is FR  -->
+<grammar  version="1.0"
+          mode ="voice"
+          xmlns="http://www.w3.org/2001/06/grammar"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.w3.org/2001/06/grammar
+                              grammar.xsd"
+          xml:lang="fr-FR" root="paletteDessin" tag-format="semantics/1.0">
+
+  <!-- 
+    GRAMMAIRE IVY VOCAL
+    ADRIEN STORA
+  -->
+  <rule id="paletteDessin" scope="public">
+    <ruleref special="GARBAGE"/>
+    <one-of>
+      <item>
+        <ruleref uri="#couleur"/>
+      </item>
+      <item>
+        <ruleref uri="#objet"/>
+      </item>
+      <item>
+        <ruleref uri="#position"/>
+      </item>
+      <item>
+        <ruleref uri="#annuler"/>
+      </item>
+    </one-of>
+    <tag>out = rules.latest().text;</tag>
+    <ruleref special="GARBAGE"/> 
+  </rule>
+
+  <rule id="couleur">
+    <one-of>
+      <item>
+        blanc
+        <tag>out.text = "Couleur:White";</tag>
+      </item>
+      <item>
+        bleu
+        <tag>out.text = "Couleur:Blue";</tag>
+      </item>
+      <item>
+        cyan
+        <tag>out.text = "Couleur:Cyan";</tag>
+      </item>
+      <item>
+        gris
+        <tag>out.text = "Couleur:Gray";</tag>
+      </item>
+      <item>
+        jaune
+        <tag>out.text = "Couleur:Yellow";</tag>
+      </item>
+      <item>
+        magenta
+        <tag>out.text = "Couleur:Magenta";</tag>
+      </item>
+      <item>
+        noir
+        <tag>out.text = "Couleur:Black";</tag>
+      </item>
+      <item>
+        orange
+        <tag>out.text = "Couleur:Orange";</tag>
+      </item>
+      <item>
+        rose
+        <tag>out.text = "Couleur:Pink";</tag>
+      </item>
+      <item>
+        rouge
+        <tag>out.text = "Couleur:Red";</tag>
+      </item>
+      <item>
+        vert
+        <tag>out.text = "Couleur:Green";</tag>
+      </item>
+      <item>
+        de cette couleur
+        <tag>out.text = "Couleur:cetteCouleur";</tag>
+      </item>
+    </one-of>
+  </rule>
+
+  <rule id="objet">
+    <one-of>
+      <item>
+        cet objet
+        <tag>out.text = "Objet:objet";</tag>
+      </item>
+      <item>
+        ce rectangle
+        <tag>out.text = "Objet:rectangle"</tag>
+      </item>
+      <item>
+        cette ellipse
+        <tag>out.text = "Objet:ellipse"</tag>
+      </item>
+    </one-of>
+  </rule>
+
+  <rule id="position">
+    <one-of>
+      <item>ici</item>
+      <item>la</item>
+      <item>a cette position</item>
+    </one-of>
+    <tag>out.text = "Position:" + meta.current().text;</tag>
+  </rule>
+
+  <rule id="annuler">
+    <one-of>
+      <item>annuler</item>
+      <item>annule</item>
+      <item>stop</item>
+      <item>arreter</item>
+      <item>arrete</item>
+    </one-of>
+    <tag>out.text = "Annuler:" + meta.current().text;</tag>
+  </rule>
+</grammar>
